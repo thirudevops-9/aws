@@ -1,0 +1,227 @@
+AWS Interview Questions & Answers:
+1.	Tell me about yourself?
+2.	Explain about your Roles and Responsibilities? Day to Day activities?
+Roles & Responsibilities:
+Software installations (Splunk, Tanium, Docker & Ngnix)
+Build Infrastructure and monitoring
+Setup Jenkins
+Create jobs in Jenkins
+Installing plugins (Jgit,Maven,saferestart,blueocean,thinbackup,jira,ec2)
+Deployments using Jenkins
+Writing docker files for creating docker images
+Running containers using docker images
+Customizing our current environment
+Writing playbooks for deployments in Kubernetes
+Working pod issues
+Working closely with developers, QA teams for deployments
+Attending daily standup meetings, bug-scrub meetings and sprint planning
+And also working for on prem servers also
+3.	which type of authentication tools you are using in your organization?
+4.	What is cloud? Why we need?
+Cloud computing is the on-demand availability of computer system resources, especially data storage (cloud storage) and computing power, without direct active management by the user. 
+
+ cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale. You typically pay only for cloud services you use, helping lower your operating costs, run your infrastructure more efficiently and scale as your business needs change.
+
+Why we need:
+On prem				Cloud
+	We need to maintain DC		> Cloud provider will take care of DC
+	Cost				> Pay per User
+	High Manpower			> Limited Manpower
+	Management is difficult		> Easy to Manage
+	Take time for setup			> Minimal time its take for setup
+	Automation is little difficult		> Automation is easy
+	Scalability	is difficult		> Easy to scale up/down
+	We need to customize our SG	> Encrypted each piece of data in Cloud
+
+5.	What is the differences between AWS/AZURE/GCP?	
+Parameter		AWS			AZURE			GCP
+Kubernetes		EKS			AKS			GKS
+Object storage		S3			Block Blobs and files	Google cloud storage
+RelationalDB		RDS			Relational DBS		GoogleCloudSQL
+Pricing			perhour		perminute		perminute
+Virtual Network	VPC			VNet			Subnet
+6.	What is EC2? Types of ec2?
+EC2 is nothing but a server.Elastic Compute Cloud is a web service that provides resizable compute capacity in the cloud. You can scale the compute capacity up and down as per the computing requirement changes. It changes the economics of computing by allowing you to pay only for the resources that you actually use.
+Types of ec2:
+T2 large
+T2 XL
+Instance Size	vCPU	Memory (GiB)	Instance Storage
+(GiB)	Network Bandwidth (Gbps)	EBS Bandwidth (Mbps)
+m5.large	2	8	EBS-Only	Up to 10	Up to 4,750
+m5.xlarge	4	16	EBS-Only	Up to 10	Up to 4,750
+m5.2xlarge	8	32	EBS-Only	Up to 10	Up to 4,750
+m5.4xlarge	16	64	EBS-Only	Up to 10	4,750
+
+7.	Types of instances?
+On-Demand Pricing
+o	On-Demand pricing is also known as pay-as-you-go. Pay-as-you-go is a pricing model that allows you to pay only for those resources that you use.
+o	You need to pay for the compute capacity by per hour or per second that depends on which instances you run.
+o	On-Demand instance does not require any upfront payments.
+o	While using On-Demand instance, you can increase or decrease the compute capacity based on the requirements of your application.
+o	On-Demand instances are recommended for those applications which are of short term and unpredictable workloads.
+o	Users that want low cost and flexibility on EC2 instances with no upfront payments.
+o	On-Demand instances are used for those applications which have been developed or tested on EC2 for the first time.
+Spot Instances
+With Spot Instances, users bid for the price of spare EC2 Instances. There’s a market price for spare instances, and only if this market price meets your instance will you be allotted the instance. Similarly, when the market price reduces, you’ll automatically lose your instance so your charge doesn’t shoot up. This model is a bit more complex than on-demand pricing, but it could save 50-90% of your total costs.
+Reserved Instances
+Finally, if you can reliably predict approximately how much compute resources your applications need in advance, you should consider Reserved Instances (RIs). In this model, users lock in
+8.	What is AMI, how to take ami?
+AMI stands for Amazon Machine Image. It is a virtual image used to create a virtual machine within an EC2 instance. You can also create multiple instances using single AMI when you need instances with the same configuration. It also provides a template for the root volume of an instance.
+9.	What does AMI include?
+An AMI includes the following things:
+•	A template for the root volume for the instance.
+•	Launch permissions to decide which AWS accounts can avail the AMI to launch instances.
+•	A block device mapping that determines the volumes to attach to the instance when it is launched.
+10.	My ec2 instance is down how will you troubleshoot?
+
+
+11.	What is EBS?
+EBS – Elastic Block Storage
+EBS is nothing but a volume that provides you persistent storage.
+When you run an EC2 instance that provides you temporary storage, if you delete an EC2 instance then the data stored in the EC2 instance will also be deleted. To make a data persistent, Amazon provides an EBS Volume. If you launch an EC2 instance and want to make some data persistent, then you need to attach an instance with the EBS Volume so that your data would be available even on deleting an EC2 instance.
+12.	How attach EBS to ec2?
+On the fly we can add to ec2, no need to reboot the ec2 to attach
+Login to aws gui console
+Select EBS under volumes > create ebs how much space you want
+Once created the volume attach to particular ec2 
+By using instance name or Instance ID
+13.	What is EFS?
+EFS – Elastic filesystem , scalable fully managed and its NFS
+We can share across the zone
+14.	EBS vs EFS?
+Amazon EBS is the block storage offered on AWS. An Amazon EBS volume is a persistent storage device that can be used as a file system for databases, application hosting and storage, and plug and play devices.
+Amazon EFS is an NFS file system service offered by AWS. An Amazon EFS file system is excellent as a managed network file system that can be shared across different Amazon EC2 instances and works like NAS devices.
+15.	S3 ? roles about S3?
+S3 is Object storage. Simple storage Service
+It is easy to use with a simple web services interface to store and retrieve any amount of data from anywhere on the web For S3, the payment model is “pay as you go”.
+o	S3 is a safe place to store the files.
+o	It is Object-based storage, i.e., you can store the images, word files, pdf files, etc.
+o	The files which are stored in S3 can be from 0 Bytes to 5 TB.
+o	It has unlimited storage means that you can store the data as much you want.
+o	Files are stored in Bucket. A bucket is like a folder available in S3 that stores the files.
+
+16.	S3 lifecycle? Types of S3?
+Click on S3,
+Create bucket
+Click on management
+Add life cycle role
+4 lifecycles in s3
+Add a name to our role, choose rule scope limit or apply for all in bucket
+Storage class transition >> current version or previous versions
+Configure expiration >> current version >> expire after 365 days
+Clean up incomplete >> select
+Review >> if some this is missed we can go back and add
+Edit delete action(enable disable)
+Data is management , safe
+Types of S3:
+
+17.	How will you provide s3 access between the zones?
+
+arn:aws:s3:::nagooribucket
+select bucket >> select settings> select public access settings>
+allow the rules and save by confirming
+select object and make public
+18.	What is RDS? Types of RDS?
+Relational Data Service(PAAS)
+MySQL, Postgress SQL,MariaDB, Amazon Aurora
+19.	RDS maintenance?
+OS patching, db upgrades
+To minimize the downtime for maintenance best setup is to deploy a mutli az setup as having a single AZ.
+We can perform the changes on secondary than will switch 
+
+Aws – personal health dash
+Choose services--
+Service :RDS
+Event : maintenance scheduler
+20.	How to take backup & Restore RDS instances?
+Select RDS > actions > take snapshot >>snapshot name
+You can see snapshots under snapshot > which db , date
+For restoration select snapshots
+Actions -restore db
+You can not restore db on existing db, you need to create new one
+Status will be backing up
+21.	What is security group?
+A security group is a virtual firewall which is controlling the traffic to your EC2 instances.When you first launch an EC2 instance, you can associate it with one or more security groups.A Security group is the first defence against hackers.
+22.	NACL ?
+NACL stands for Network Access Control Lists.It is a security layer for your VPC that controls the traffic in and out of one or more subnets.
+It is an optional layer for your VPC.
+You can set up a Network ACL similar to the security group that adds an additional layer of security to your VPC.
+
+23.	Differences between security group and NACL?
+Security Group	NACL (Network Access Control List)
+It supports only allow rules, and by default, all the rules are denied. You cannot deny the rule for establishing a connection.	It supports both allow and deny rules, and by default, all the rules are denied. You need to add the rule which you can either allow or deny it.
+It is a stateful means that any changes made in the inbound rule will be automatically reflected in the outbound rule. For example, If you are allowing an incoming port 80, then you also have to add the outbound rule explicitly.	It is a stateless means that any changes made in the inbound rule will not reflect the outbound rule, i.e., you need to add the outbound rule separately. For example, if you add an inbound rule port number 80, then you also have to explicitly add the outbound rule.
+It is associated with an EC2 instance.	It is associated with a subnet.
+All the rules are evaluated before deciding whether to allow the traffic.	Rules are evaluated in order, starting from the lowest number.
+Security Group is applied to an instance only when you specify a security group while launching an instance.	NACL has applied automatically to all the instances which are associated with an instance.
+It is the first layer of defense.	It is the second layer of defense.
+
+24.	What do you understand by a Security Group?
+When you create an instance in AWS, you may or may not want that instance to be accessible from the public network. Moreover, you may want that instance to be accessible from some networks and not from others.
+Security Groups are a type of rule-based Virtual Firewall using which you can control access to your instances. You can create rules defining the Port Numbers, Networks, or protocols from which you want to allow access or deny access.
+25.	What is NAT & IGW?
+An Internet Gateway is a logical connection between an Amazon VPC and the Internet. It is not a physical device. Only one can be associated with each VPC
+ If a VPC does not have an Internet Gateway, then the resources in the VPC cannot be accessed from the Internet 
+A subnet is associated to be a Public Subnet if it has a Route Table that directs traffic to the Internet Gateway.
+
+IGW :It allows resources in a private subnet to access the internet (think yum updates, external database connections, wget calls, OS patch, etc).
+It only works one way. The internet at large cannot get through your NAT to your private resources unless you explicitly allow it.
+
+26.	what is cloud formation?
+It will automate the services if you want to, ec2 RDS
+Infrastructure Management
+Quickly replicate your Infra
+Easy control and track changes to your infra
+27.	where will have to check incase instances are failed?
+Aws console, and gui
+aws ec2 describe-instance-status
+28.	List the components under EC2?
+Instances – Instances are nothing but servers
+Templates- it’s a snapshot, if you want to install same existing server, no need to specify and go launch instance.
+29.	IAM? Role?
+You can use AWS IAM to securely control individual and group access to your AWS resources. You can create and manage user identities ("IAM users") and grant permissions for those IAM users to access your resources. You can also grant permissions for users outside of AWS ( federated users).
+30.	What is port mapping? How to do port mapping?
+
+31.	What is listener?
+A listener is a process that checks for connection requests, by using the protocol and port will listen.
+With tis command will check ports are listening or not
+#netstat -anlp LISTEN
+
+32.	ALB vs NLB?
+Feature	Application Load Balancer	Network Load Balancer	Classic Load Balancer
+
+Use cases	Web apps, microservices & containers	Extreme performance - millions of requests with less latency (100ms)	Avoid if possible. Not recommended by AWS.
+Protocols Supported	HTTP, HTTPS (Layer 7)	TCP, UDP, TLS (Layer 4)	TCP, SSL/TLS, HTTP, HTTPS(Layer 4 & 7)
+Dynamic Host Port Mapping	   ✓	    ✓	 
+Cross-zone load balancing	✓(Always Enabled)	✓(Default Disabled)	✓(Default Disabled)
+Sticky sessions	✓	 	✓
+Server Name Indication (SNI)	✓	✓	 
+Static IP	 	✓	 
+IP addresses as targets	✓	✓ (TCP, TLS)	 
+Source IP address range (CIDR) based routing	✓	 	 
+Path(Route) Based Routing	✓	 	 
+Host-Based Routing	✓	 	 
+33.	What is VPC? How to do VPC peering?
+
+34.	What is path based and host based routing in LB?
+In April 2017, AWS came up with host-based routing for ALBs. This is similar to path-based routing but instead of using a path suffix, the host header is examined and requests are routed accordingly. This seemed a lot more promising as it should be totally transparent to the underlying service.
+35.	Public subnet vs private subnet?
+PUBLIC SUBNET If a subnet's traffic is routed to an internet gateway, the subnet is known as a public subnet. 
+PRIVATE SUBNET If a subnet doesn't have a route to the internet gateway, the subnet is known as a private subnet.
+36.	What will happen if I make public subnet to private?
+Instances within the same VPC can connect to one another via their private IP addresses, as such it is possible to connect to an instance in a private subnet from an instance in a public subnet; otherwise known as a bastion host.
+37.	How to find the IP is belongs to public or private?
+       PRIVATE IP ADDRESS	PUBLIC IP ADDRESS
+       Range: 10.0.0.0 – 10.255.255.255, 172.16.0.0 –        172.31.255.255, 192.168.0.0 – 192.168.255.255	Range: Besides private IP addresses, rest are public.
+Example: 192.168.1.10	Example: 17.5.7.8
+
+38.	Types of instances?
+39.	What is Elastic IP?
+An Elastic IP address is a reserved public IP address that you can assign to any EC2 instance in a particular region, until you choose to release it. ... When you associate an Elastic IP address with an EC2 instance, it replaces the default public IP address.
+40.	What is Cloud Watch?
+CloudWatch helps you to monitor AWS environments like EC2, RDS Instances, and CPU utilization. It also triggers alarms depending on various metrics.
+Cloud Front:
+Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds, all within a developer-friendly environment.
+Create IAM role for ec2 instance
+Install cloudwatch logs on ec2 instance
+
